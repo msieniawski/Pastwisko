@@ -1,4 +1,4 @@
-package pl.edu.agh;
+package com.pastwisko;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

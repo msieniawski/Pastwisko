@@ -1,4 +1,4 @@
-package pl.edu.agh;
+package com.pastwisko;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

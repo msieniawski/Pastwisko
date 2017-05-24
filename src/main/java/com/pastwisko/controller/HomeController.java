@@ -1,4 +1,4 @@
-package pl.edu.agh.controller;
+package com.pastwisko.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
