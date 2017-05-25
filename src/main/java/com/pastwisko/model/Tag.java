@@ -5,12 +5,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name = "tag")
+@Table(name = "tags")
 public class Tag {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -22,7 +24,23 @@ public class Tag {
     @Getter @Setter
     private String name;
 
-    @JoinTable @OneToMany
+    @ManyToMany(fetch = EAGER)
+    @JoinTable
     @Getter @Setter
     private List<CopyPasta> pastaList;
+
+    public Tag() {
+        this.pastaList = new ArrayList<>();
+    }
+
+    public Tag(String name) {
+        this.name = name;
+        this.pastaList = new ArrayList<>();
+    }
+
+    public Tag(String name, List<CopyPasta> pastaList) {
+        this.name = name;
+        this.pastaList = pastaList;
+        this.pastaList = new ArrayList<>();
+    }
 }

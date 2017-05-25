@@ -7,10 +7,11 @@ import javax.persistence.*;
 
 import java.util.List;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name  = "user")
+@Table(name  = "users")
 public class User {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -18,21 +19,32 @@ public class User {
     @Getter @Setter
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "username", columnDefinition = "varchar(50)", nullable = false)
     @Getter @Setter
     private String userName;
 
-    @Column(name = "password")
+    // TU OCZYWIŚCIE POWINNY BYĆ STOROWANE HASZE XD
+    @Column(name = "password", columnDefinition = "varchar(256)", nullable = false)
     @Getter @Setter
     private String password;
 
-    @Column(name = "mail")
+    @Column(name = "mail", columnDefinition = "varchar(100)", nullable = false)
     @Getter @Setter
     private String mail;
 
-    @JoinTable @OneToMany
+    @OneToMany(mappedBy = "author", fetch = EAGER)
     @Getter @Setter
     private List<CopyPasta> pastaList;
+
+    @OneToMany(mappedBy = "author", fetch = EAGER)
+    @Getter @Setter
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "author", fetch = EAGER)
+    @Getter @Setter
+    private List<Rating> ratings;
+
+    public User() {}
 
     public User(String userName, String password, String mail) {
         this.userName = userName;
