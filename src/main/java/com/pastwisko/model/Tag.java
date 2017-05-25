@@ -10,25 +10,17 @@ import java.util.List;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name  = "user")
-public class User {
+@Table(name = "tag")
+public class Tag {
 
     @Id @GeneratedValue(strategy = AUTO)
-    @Column(name = "user_id")
+    @Column(name = "tag_id")
     @Getter @Setter
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "name")
     @Getter @Setter
-    private String userName;
-
-    @Column(name = "password")
-    @Getter @Setter
-    private String password;
-
-    @Column(name = "mail")
-    @Getter @Setter
-    private String mail;
+    private String name;
 
     @JoinTable @OneToMany
     @Getter @Setter
