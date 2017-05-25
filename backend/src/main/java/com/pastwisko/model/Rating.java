@@ -8,7 +8,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name = "rating")
+@Table(name = "ratings")
 public class Rating {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -16,15 +16,25 @@ public class Rating {
     @Getter @Setter
     private int id;
 
-    @JoinColumn @ManyToOne
+    @Column(name = "value", nullable = false)
     @Getter @Setter
-    private RatingValue ratingValue;
+    private int value;
 
-    @JoinColumn @ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "author", nullable = false)
     @Getter @Setter
-    private User owner;
+    private User author;
 
-    @JoinColumn @ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "pasta", nullable = false)
     @Getter @Setter
     private CopyPasta pasta;
+
+    public Rating() {}
+
+    public Rating(int value, User author, CopyPasta pasta) {
+        this.value = value;
+        this.author = author;
+        this.pasta = pasta;
+    }
 }

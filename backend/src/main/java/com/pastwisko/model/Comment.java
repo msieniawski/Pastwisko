@@ -8,7 +8,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name  = "comment")
+@Table(name = "comments")
 public class Comment {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -16,15 +16,25 @@ public class Comment {
     @Getter @Setter
     private int id;
 
-    @Column(name = "text")
+    @Column(name = "text", columnDefinition = "text", nullable = false)
     @Getter @Setter
     private String text;
 
-    @JoinColumn(name = "owner") @ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "author", nullable = false)
     @Getter @Setter
-    private User owner;
+    private User author;
 
-    @JoinColumn(name = "pasta") @ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "pasta", nullable = false)
     @Getter @Setter
     private CopyPasta pasta;
+
+    public Comment() {}
+
+    public Comment(String text, User author, CopyPasta pasta) {
+        this.text = text;
+        this.author = author;
+        this.pasta = pasta;
+    }
 }
