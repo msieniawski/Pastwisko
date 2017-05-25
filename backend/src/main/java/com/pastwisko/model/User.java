@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
