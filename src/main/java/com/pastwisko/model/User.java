@@ -33,4 +33,10 @@ public class User {
     @JoinTable @OneToMany
     @Getter @Setter
     private List<CopyPasta> pastaList;
+
+    public User(String userName, String password, String mail) {
+        this.userName = userName;
+        this.password = password;
+        this.mail = mail;
+    }
 }
