@@ -2,14 +2,16 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from "./home.component";
-import {FeedComponent} from "./feed/feed.component";
-import {CreatorComponent} from "./creator/creator.component";
+import { FeedComponent } from "./feed/feed.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { CopypastaCreatorComponent } from "./copypasta-creator/copypasta-creator.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent,
     children: [
       { path: 'feed', component: FeedComponent },
-      { path: 'creator', component: CreatorComponent }
+      { path: 'creator', component: CopypastaCreatorComponent },
+      { path: 'profile', component: UserProfileComponent }
     ]}
 ];
 

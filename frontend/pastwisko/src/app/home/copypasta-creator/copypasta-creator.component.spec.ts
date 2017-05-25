@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatorComponent } from './creator.component';
+import { CopypastaCreatorComponent } from './copypasta-creator.component';
 
-describe('CreatorComponent', () => {
-  let component: CreatorComponent;
-  let fixture: ComponentFixture<CreatorComponent>;
+describe('CopypastaCreatorComponent', () => {
+  let component: CopypastaCreatorComponent;
+  let fixture: ComponentFixture<CopypastaCreatorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreatorComponent ]
+      declarations: [ CopypastaCreatorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreatorComponent);
+    fixture = TestBed.createComponent(CopypastaCreatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
