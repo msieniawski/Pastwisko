@@ -1,5 +1,7 @@
 package com.pastwisko.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +28,7 @@ public class Tag {
 
     @ManyToMany(fetch = EAGER)
     @JoinTable
+    @JsonBackReference
     @Getter @Setter
     private List<CopyPasta> pastaList;
 

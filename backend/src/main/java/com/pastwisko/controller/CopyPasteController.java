@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "api")
 public class CopyPasteController {
 
     private final CopyPastaService copyPastaService;
@@ -19,7 +20,7 @@ public class CopyPasteController {
         this.copyPastaService = copyPastaService;
     }
 
-    @RequestMapping(value = "api/pastas", method = RequestMethod.GET)
+    @RequestMapping(value = "/pastas", method = RequestMethod.GET)
     public List<CopyPasta> list() {
         return copyPastaService.listAll();
     }
