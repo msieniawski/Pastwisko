@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "api/test")
 public class TestController {
 
     private final UserService userService;
@@ -16,7 +17,7 @@ public class TestController {
         this.userService = userService;
     }
 
-    @RequestMapping(name = "api/test", method = RequestMethod.GET)
+    @RequestMapping(name = "/", method = RequestMethod.GET)
     public int test() {
         return userService.listAll().size();
     }
