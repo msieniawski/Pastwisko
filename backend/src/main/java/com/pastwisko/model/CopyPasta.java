@@ -1,5 +1,7 @@
 package com.pastwisko.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,18 +37,22 @@ public class CopyPasta {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
+    @JsonBackReference
     @Getter @Setter
     private User author;
 
     @OneToMany(mappedBy = "pasta", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "pasta", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<Rating> ratings;
 
     @ManyToMany(mappedBy = "pastaList", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<Tag> tags;
 

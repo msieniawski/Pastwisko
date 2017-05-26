@@ -1,5 +1,6 @@
 package com.pastwisko.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,6 @@ import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
@@ -34,14 +34,17 @@ public class User {
     private String mail;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<CopyPasta> pastaList;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
+    @JsonManagedReference
     @Getter @Setter
     private List<Rating> ratings;
 
