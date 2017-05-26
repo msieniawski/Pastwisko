@@ -2,14 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>backend</artifactId>
-    <name>backend</name>
+    <groupId>com.pastwisko</groupId>
+    <artifactId>Pastwisko</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+	
+	<name>Pastwisko</name>
 
     <parent>
-        <groupId>com.pastwisko</groupId>
-		<artifactId>Pastwisko</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.3.RELEASE</version>
     </parent>
+	
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -37,12 +47,6 @@
             <artifactId>lombok</artifactId>
             <version>1.12.4</version>
             <scope>provided</scope>
-        </dependency>
-		<dependency>
-            <groupId>com.pastwisko</groupId>
-            <artifactId>frontend</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 	
