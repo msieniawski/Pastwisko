@@ -5,10 +5,6 @@
     <artifactId>frontend</artifactId>
     <name>frontend</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <parent>
         <groupId>com.pastwisko</groupId>
 		<artifactId>Pastwisko</artifactId>
@@ -16,7 +12,6 @@
     </parent>
 	
 	<build>
-		<outputDirectory>../target/frontend</outputDirectory>
 		<plugins>
 			<plugin>
                 <groupId>com.github.eirslett</groupId>
@@ -26,7 +21,7 @@
                 <configuration>
                     <nodeVersion>v6.10.1</nodeVersion>o
                     <npmVersion>4.4.1</npmVersion>
-                    <workingDirectory>pastwisko</workingDirectory>
+                    <workingDirectory>src/main/frontend</workingDirectory>
                 </configuration>
  
                 <executions>

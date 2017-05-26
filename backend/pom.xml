@@ -5,12 +5,6 @@
     <artifactId>backend</artifactId>
     <name>backend</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
     <parent>
         <groupId>com.pastwisko</groupId>
 		<artifactId>Pastwisko</artifactId>

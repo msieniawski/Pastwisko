@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "pastwisko"
+    "name": "Pastwisko"
   },
   "apps": [
     {
       "root": "src",
-      "outDir": "../target/frontend",
+      "outDir": "../../../target/frontend",
       "assets": [
         "assets",
         "favicon.ico"
