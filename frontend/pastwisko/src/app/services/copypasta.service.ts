@@ -7,7 +7,7 @@ import { Copypasta } from "../model/copypasta";
 @Injectable()
 export class CopypastaService {
 
-  private pastasUrl = '/pastas';
+  private pastasUrl = 'api/pastas';
 
   constructor(private http: Http) { }
 

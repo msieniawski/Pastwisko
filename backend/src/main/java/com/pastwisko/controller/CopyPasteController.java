@@ -19,7 +19,7 @@ public class CopyPasteController {
         this.copyPastaService = copyPastaService;
     }
 
-    @RequestMapping(value = "/pastas", method = RequestMethod.GET)
+    @RequestMapping(value = "api/pastas", method = RequestMethod.GET)
     public List<CopyPasta> list() {
         return copyPastaService.listAll();
     }

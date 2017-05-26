@@ -16,7 +16,7 @@ public class TestController {
         this.userService = userService;
     }
 
-    @RequestMapping(name = "/test", method = RequestMethod.GET)
+    @RequestMapping(name = "api/test", method = RequestMethod.GET)
     public int test() {
         return userService.listAll().size();
     }
