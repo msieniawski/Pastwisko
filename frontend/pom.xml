@@ -16,6 +16,7 @@
     </parent>
 	
 	<build>
+		<outputDirectory>../target/frontend</outputDirectory>
 		<plugins>
 			<plugin>
                 <groupId>com.github.eirslett</groupId>
@@ -25,7 +26,7 @@
                 <configuration>
                     <nodeVersion>v6.10.1</nodeVersion>o
                     <npmVersion>4.4.1</npmVersion>
-                    <workingDirectory>src/main/frontend</workingDirectory>
+                    <workingDirectory>pastwisko</workingDirectory>
                 </configuration>
  
                 <executions>
