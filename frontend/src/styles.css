@@ -18,6 +18,10 @@
   }
 }
 
+.nav-item {
+  text-align: center;
+}
+
 .container-fluid, .container {
   background-color: #dddddd;
   height: 100vh;

@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from "./home.component";
@@ -11,7 +11,10 @@ export const routes: Routes = [
     children: [
       { path: 'feed', component: FeedComponent },
       { path: 'creator', component: CopypastaCreatorComponent },
-      { path: 'profile', component: UserProfileComponent }
+      { path: 'profile', component: UserProfileComponent },
+      { path: 'auth', redirectTo: '/auth/login', pathMatch: 'full' },
+      { path: '', redirectTo: 'feed', pathMatch: 'full' },
+      { path: '**', redirectTo: 'feed', pathMatch: 'full' }
     ]}
 ];
 
