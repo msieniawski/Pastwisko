@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <ul>
+  <ul class="no-marker">
     <li *ngFor="let copypasta of copypastas">
-      "{{copypasta.title}}"
+      <app-copypasta [copypasta]=copypasta></app-copypasta>
     </li>
   </ul>
 </div>

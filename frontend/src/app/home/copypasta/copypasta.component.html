@@ -1,3 +1,13 @@
-<div class="container">
-
+<div class="container-fluid">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <a class="navbar-brand" href="#">{{copypasta.title}}</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav" routerLinkActive="active">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile">{{copypasta.author.userName}}</a>
+        </li>
+      </ul>
+    </div>
+    <p class="rating">{{rating.toPrecision(2)}}</p>
+  </nav>
 </div>
