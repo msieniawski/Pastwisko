@@ -14,7 +14,7 @@ export class CopypastaService {
   getCopypastas(): Promise<Copypasta[]> {
     return this.http.get(this.pastasUrl)
       .toPromise()
-      .then(response => response.json().data as Copypasta[])
+      .then(response => response.json() as Copypasta[])
       .catch(this.handleError);
   }
 

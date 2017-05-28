@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CopypastaService } from '../../services/copypasta.service'
+import { CopypastaService } from '../../services/copypasta.service';
 import { Copypasta } from "../../model/copypasta";
 
 @Component({
@@ -16,7 +16,10 @@ export class FeedComponent implements OnInit {
   constructor(private copypastaService: CopypastaService) { }
 
   getCopypastas(): void {
-    this.copypastaService.getCopypastas().then(heroes => this.copypastas = heroes);
+    this.copypastaService.getCopypastas().then(copypastas => {
+      console.log(copypastas);
+      this.copypastas = copypastas;
+    });
   }
 
   ngOnInit() {
