@@ -1,6 +1,7 @@
 package com.pastwisko.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +24,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     @Getter @Setter
     private User author;
 

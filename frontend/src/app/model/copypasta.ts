@@ -4,8 +4,9 @@ import {Rating} from "./rating";
 import {Tag} from "./tag";
 
 export class Copypasta {
-  title: String;
-  text: String;
+  id: number;
+  title: string;
+  text: string;
   creationDate: Date;
   author: User;
   comments: Comment[];

@@ -37,7 +37,7 @@ public class CopyPasta {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     @Getter @Setter
     private User author;
 
