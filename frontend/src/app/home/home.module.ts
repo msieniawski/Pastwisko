@@ -7,11 +7,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CopypastaCreatorComponent } from './copypasta-creator/copypasta-creator.component';
 import {HomeRoutingModule} from "./home-routing.module";
 import { CopypastaComponent } from './copypasta/copypasta.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TranslateModule
   ],
   declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent]
 })

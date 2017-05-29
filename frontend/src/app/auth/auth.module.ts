@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthComponent } from './auth.component';
 import {AuthRoutingModule} from "./auth-routing.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    TranslateModule
   ],
   declarations: [LoginComponent, RegistrationComponent, AuthComponent]
 })
