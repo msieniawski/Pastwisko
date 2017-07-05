@@ -8,12 +8,14 @@ import { CopypastaCreatorComponent } from './copypasta-creator/copypasta-creator
 import {HomeRoutingModule} from "./home-routing.module";
 import { CopypastaComponent } from './feed/copypasta/copypasta.component';
 import {TranslateModule} from "@ngx-translate/core";
+import {StarRatingModule} from "angular-star-rating";
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
-    TranslateModule
+    TranslateModule,
+    StarRatingModule
   ],
   declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent]
 })

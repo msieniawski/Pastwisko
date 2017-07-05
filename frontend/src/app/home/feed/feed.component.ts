@@ -16,10 +16,7 @@ export class FeedComponent implements OnInit {
   constructor(private copypastaService: CopypastaService) { }
 
   getCopypastas(): void {
-    this.copypastaService.getCopypastas().then(copypastas => {
-      console.log(copypastas);
-      this.copypastas = copypastas;
-    });
+    this.copypastaService.getCopypastas().then(copypastas => { this.copypastas = copypastas; });
   }
 
   ngOnInit() {

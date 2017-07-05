@@ -8,8 +8,17 @@
         </li>
       </ul>
     </div>
-    <p class="rating" translate>Rating</p>
-    <p class="rating">{{rating.toPrecision(2)}}</p>
+
+    <div class="flex">
+      <p class="rating wide" translate>Your Rating:</p>
+      <p class="rating h5">{{getMyRating()}}</p>
+      <star-rating-comp [starType]="'svg'" [rating]="myRating" (onRatingChange)="onRatingChange($event)"></star-rating-comp>
+    </div>
+    <div class="flex">
+      <p class="rating wide" translate>Average:</p>
+      <p class="rating h5">{{avgRating.toPrecision(2)}}</p>
+      <star-rating-comp [starType]="'svg'" [rating]="avgRating" [readOnly]="true" [showHalfStars]="true"></star-rating-comp>
+    </div>
   </nav>
 
   <div class="container-fluid flex top-margin">
@@ -18,16 +27,11 @@
     </p>
     <div class="col-5">
       <div class="col-10 col-centered">
-        <div class="container-fluid flex center">
-          <h5 translate>Your rating</h5>
-        </div>
-
-        <div class="top-margin center" *ngFor="let comment of copypasta.comments">
-          <a class="h5" routerLink="profile">{{comment.author.userName}}</a>
+        <div class="center" style="margin-bottom: 20px" *ngFor="let comment of copypasta.comments">
+          <a class="h6" routerLink="profile">{{comment.author.userName}}</a>
           <p>{{comment.text}}</p>
         </div>
-
-        <div class="form-group top-margin">
+        <div class="form-group">
           <textarea class="form-control" rows="3"></textarea>
         </div>
         <div class="container-fluid flex center">
