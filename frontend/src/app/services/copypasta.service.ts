@@ -5,17 +5,18 @@ import 'rxjs/add/operator/toPromise';
 import { Copypasta } from "../model/copypasta";
 import {Rating} from "../model/rating";
 import {Comment} from "../model/comment";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class CopypastaService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.authService.getToken()});
   private pastasUrl = 'api/pastas/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private authService: AuthService) { }
 
   getAllCopypastas(): Promise<Copypasta[]> {
-    return this.http.get(this.pastasUrl)
+    return this.http.get(this.pastasUrl, {headers: this.headers})
       .toPromise().then(response => response.json() as Copypasta[])
       .catch(this.handleError);
   }
