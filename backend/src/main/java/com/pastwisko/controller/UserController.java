@@ -2,30 +2,41 @@ package com.pastwisko.controller;
 
 import com.pastwisko.model.User;
 import com.pastwisko.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
     @GetMapping("api/users")
-    public List<User> list() {
+    @ResponseBody
+    public List<User> getAllUsers() {
         return userService.listAll();
     }
 
-    @GetMapping("api/users/{id}")
-    public User user(@PathVariable int id) {
-        return userService.getById(id);
+    @PostMapping("api/users")
+    public ResponseEntity<?> saveUser(@RequestBody User user) {
+
+        if (user == null) {
+            return ResponseEntity.badRequest().body("User is null");
+        }
+
+        userService.saveOrUpdate(user);
+
+        return ResponseEntity.ok(user);
     }
+
+    @GetMapping("api/users/{userName}")
+    @ResponseBody
+    public User getUser(@PathVariable String userName) {
+        return userService.findByUserName(userName);
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.pastwisko.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +16,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "tags")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Tag {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -26,8 +32,8 @@ public class Tag {
 
     @ManyToMany(fetch = EAGER)
     @JoinTable
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private List<CopyPasta> pastaList;
 
     public Tag() {
