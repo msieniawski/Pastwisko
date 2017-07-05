@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Copypasta} from "../../model/copypasta";
+import {Copypasta} from "../../../model/copypasta";
 
 @Component({
   selector: 'app-copypasta',

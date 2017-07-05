@@ -6,7 +6,7 @@ import { FeedComponent } from './feed/feed.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CopypastaCreatorComponent } from './copypasta-creator/copypasta-creator.component';
 import {HomeRoutingModule} from "./home-routing.module";
-import { CopypastaComponent } from './copypasta/copypasta.component';
+import { CopypastaComponent } from './feed/copypasta/copypasta.component';
 import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
