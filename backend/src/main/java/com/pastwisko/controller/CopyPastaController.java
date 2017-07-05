@@ -32,8 +32,14 @@ public class CopyPastaController {
 
     @GetMapping("api/pastas/{id}")
     @ResponseBody
-    public CopyPasta getAllCopyPastas(@PathVariable int id) {
-        return copyPastaService.getById(id);
+    public ResponseEntity<?> getPasta(@PathVariable int id) {
+        CopyPasta copyPasta = copyPastaService.getById(id);
+
+        if (copyPasta == null) {
+            return ResponseEntity.badRequest().body("Pasta not found: " + id);
+        }
+
+        return ResponseEntity.ok(copyPasta);
     }
 
     @PostMapping("api/pastas/{id}/comment")
@@ -44,6 +50,10 @@ public class CopyPastaController {
         }
 
         CopyPasta copyPasta = copyPastaService.getById(id);
+
+        if (copyPasta == null) {
+            return ResponseEntity.badRequest().body("Pasta not found: " + id);
+        }
 
         copyPasta.add(comment);
         comment.setPasta(copyPasta);
@@ -62,6 +72,10 @@ public class CopyPastaController {
 
         CopyPasta copyPasta = copyPastaService.getById(id);
 
+        if (copyPasta == null) {
+            return ResponseEntity.badRequest().body("Pasta not found: " + id);
+        }
+
         copyPasta.add(rating);
         rating.setPasta(copyPasta);
 
@@ -78,6 +92,11 @@ public class CopyPastaController {
         }
 
         CopyPasta copyPasta = copyPastaService.getById(id);
+
+        if (copyPasta == null) {
+            return ResponseEntity.badRequest().body("Pasta not found: " + id);
+        }
+
         copyPasta.add(tag);
 
         tagService.saveOrUpdate(tag);
