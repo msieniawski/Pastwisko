@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid top-margin col-10 shadow-box">
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <a class="navbar-brand" href="#">{{copypasta.title}}</a>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -11,4 +11,12 @@
     <p class="rating" translate>Rating</p>
     <p class="rating">{{rating.toPrecision(2)}}</p>
   </nav>
+
+  <div class="container-fluid flex top-margin">
+  <p class="col-6" readonly >
+    {{copypasta.text}}
+  </p>
+  </div>
+
+
 </div>
