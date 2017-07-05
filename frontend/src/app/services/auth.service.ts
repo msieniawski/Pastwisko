@@ -23,6 +23,11 @@ export class AuthService {
     return username ? username : "";
   }
 
+  static isLoggedIn(): boolean {
+    const token: String = AuthService.getToken();
+    return token && token.length > 0;
+  }
+
   static logout(): void {
     localStorage.removeItem('currentUser');
   }
