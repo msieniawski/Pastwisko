@@ -1,7 +1,8 @@
 package com.pastwisko.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.pastwisko.serializer.CopyPastaSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,10 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "copypastas")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+@JsonSerialize(using = CopyPastaSerializer.class)
 public class CopyPasta {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -37,22 +42,18 @@ public class CopyPasta {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
-    @JsonManagedReference
     @Getter @Setter
     private User author;
 
     @OneToMany(mappedBy = "pasta", fetch = EAGER)
-    @JsonManagedReference
     @Getter @Setter
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "pasta", fetch = EAGER)
-    @JsonManagedReference
     @Getter @Setter
     private List<Rating> ratings;
 
     @ManyToMany(mappedBy = "pastaList", fetch = EAGER)
-    @JsonManagedReference
     @Getter @Setter
     private List<Tag> tags;
 
@@ -66,5 +67,9 @@ public class CopyPasta {
         this.creationDate = creationDate;
         this.author = author;
         this.tags = new ArrayList<>();
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
     }
 }

@@ -1,8 +1,6 @@
 package com.pastwisko.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +12,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name  = "users")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class User {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -27,8 +28,8 @@ public class User {
 
     // TU OCZYWIŚCIE POWINNY BYĆ STOROWANE HASZE XD
     @Column(name = "password", columnDefinition = "varchar(256)", nullable = false)
-    @JsonIgnore
     @Getter @Setter
+    @JsonIgnore
     private String password;
 
     @Column(name = "mail", columnDefinition = "varchar(100)", nullable = false)
@@ -36,18 +37,18 @@ public class User {
     private String mail;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private List<CopyPasta> pastaList;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "author", fetch = EAGER)
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private List<Rating> ratings;
 
     public User() {}

@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
     public void delete(int id) {
         userRepository.delete(id);
     }
+
+    @Override
+    public User findByUserName(String userName) {
+        List<User> users = userRepository.findByUserName(userName);
+        return users.isEmpty() ? null : users.get(0);
+    }
 }

@@ -1,7 +1,8 @@
 package com.pastwisko.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "comments")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Comment {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -24,14 +28,13 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
-    @JsonManagedReference
     @Getter @Setter
     private User author;
 
     @ManyToOne
     @JoinColumn(name = "pasta", nullable = false)
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private CopyPasta pasta;
 
     public Comment() {}

@@ -1,7 +1,6 @@
 package com.pastwisko.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +10,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "ratings")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Rating {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -24,14 +26,13 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
-    @JsonManagedReference
     @Getter @Setter
     private User author;
 
     @ManyToOne
     @JoinColumn(name = "pasta", nullable = false)
-    @JsonBackReference
     @Getter @Setter
+    @JsonIgnore
     private CopyPasta pasta;
 
     public Rating() {}
