@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         if (result === true) {
           this.router.navigate(['home']);
         } else {
-          this.error = 'Username or password is incorrect';
+          this.error = 'Unknown error';
           this.pending = false;
         }
       }, error => {

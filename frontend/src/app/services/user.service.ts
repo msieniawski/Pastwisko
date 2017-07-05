@@ -7,13 +7,13 @@ import {AuthService} from "./auth.service";
 @Injectable()
 export class UserService {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.authService.getToken()});
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AuthService.getToken()});
   private usersUrl = 'api/users/';
 
-  constructor(private http: Http, private authService: AuthService) { }
+  constructor(private http: Http) { }
 
-  getUser(id: number): Promise<User> {
-    return this.http.get(this.usersUrl + id.toString(), {headers: this.headers})
+  getUser(username: string): Promise<User> {
+    return this.http.get(this.usersUrl + username, {headers: this.headers})
       .toPromise().then(response => response.json() as User)
       .catch(this.handleError);
   }

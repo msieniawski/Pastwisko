@@ -16,12 +16,12 @@ export class UserProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.getUser(id);
+    const username = this.route.snapshot.params['username'];
+    this.getUser(username);
   }
 
-  getUser(id: number) {
-    this.userService.getUser(id).then(user => this.user = user);
+  getUser(username: string) {
+    this.userService.getUser(username).then(user => this.user = user);
   }
 
 }

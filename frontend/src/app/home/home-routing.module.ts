@@ -11,7 +11,7 @@ export const routes: Routes = [
     children: [
       { path: 'feed', component: FeedComponent },
       { path: 'creator', component: CopypastaCreatorComponent },
-      { path: 'profile/:id', component: UserProfileComponent },
+      { path: 'profile/:username', component: UserProfileComponent },
       { path: 'auth', redirectTo: '/auth/login', pathMatch: 'full' },
       { path: '', redirectTo: 'feed', pathMatch: 'full' },
       { path: '**', redirectTo: 'feed', pathMatch: 'full' }
