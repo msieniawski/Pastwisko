@@ -26,7 +26,7 @@
 
   <div class="offset-4 col-4">
     <div class="container-fluid flex center">
-      <button type="submit" class="btn btn-success" translate>Register</button>
+      <button [disabled]="pending" type="submit" class="btn btn-success" translate>Register</button>
     </div>
   </div>
 </form>

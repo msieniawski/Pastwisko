@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
+  pending: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.pending = false;
   }
 
 }
