@@ -48,6 +48,6 @@ export class CopypastaComponent implements OnInit {
   }
 
   saveChanges() {
-    this.copypastaService.saveCopypasta(this.copypasta);
+    this.copypastaService.updateCopypasta(this.copypasta);
   }
 }

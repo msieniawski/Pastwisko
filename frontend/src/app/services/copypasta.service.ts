@@ -18,8 +18,13 @@ export class CopypastaService {
       .catch(this.handleError);
   }
 
-  saveCopypasta(copypasta: Copypasta) {
+  updateCopypasta(copypasta: Copypasta) {
     this.http.post(this.pastasUrl + copypasta.id.toString(), JSON.stringify(copypasta), {headers: this.headers})
+      .toPromise().catch(this.handleError);
+  }
+
+  createCopypasta(copypasta: Copypasta) {
+    this.http.post(this.pastasUrl, JSON.stringify(copypasta), {headers: this.headers})
       .toPromise().catch(this.handleError);
   }
 
