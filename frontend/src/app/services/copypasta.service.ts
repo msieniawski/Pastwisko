@@ -20,14 +20,16 @@ export class CopypastaService {
       .catch(this.handleError);
   }
 
-  addComment(comment: Comment, pastaId: number) {
-    this.http.post(this.pastasUrl + pastaId.toString() + "/comment", JSON.stringify(comment), {headers: this.headers})
-      .toPromise().catch(this.handleError);
+  addComment(comment: Comment, pastaId: number): Promise<Comment> {
+    return this.http.post(this.pastasUrl + pastaId.toString() + "/comment", JSON.stringify(comment), {headers: this.headers})
+      .toPromise().then(response => response.json() as Comment)
+      .catch(this.handleError);
   }
 
-  addRating(rating: Rating, pastaId: number) {
-    this.http.post(this.pastasUrl + pastaId.toString() + "/rating", JSON.stringify(rating), {headers: this.headers})
-      .toPromise().catch(this.handleError);
+  addRating(rating: Rating, pastaId: number): Promise<Rating> {
+    return this.http.post(this.pastasUrl + pastaId.toString() + "/rating", JSON.stringify(rating), {headers: this.headers})
+      .toPromise().then(response => response.json() as Rating)
+      .catch(this.handleError);
   }
 
   createCopypasta(copypasta: Copypasta) {

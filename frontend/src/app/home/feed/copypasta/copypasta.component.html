@@ -21,6 +21,10 @@
     </div>
   </nav>
 
+  <div class="container-fluid flex center">
+    <span class="label label-default" *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
+  </div>
+
   <div class="container-fluid flex top-margin">
     <p class="col-7">
       {{copypasta.text}}

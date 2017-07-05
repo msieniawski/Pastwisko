@@ -40,8 +40,7 @@ export class CopypastaComponent implements OnInit {
       const rating = new Rating;
       rating.value = $event.rating;
       rating.author = new User;
-      this.copypasta.ratings.push(rating);
-      this.copypastaService.addRating(rating, this.copypasta.id);
+      this.copypastaService.addRating(rating, this.copypasta.id).then(r => this.copypasta.ratings.push(r));
     }
     this.myRating = $event.rating;
   }
@@ -50,7 +49,6 @@ export class CopypastaComponent implements OnInit {
     const comment = new Comment;
     comment.text = this.currentComment;
     comment.author = new User;
-    this.copypasta.comments.push(comment);
-    this.copypastaService.addComment(comment, this.copypasta.id);
+    this.copypastaService.addComment(comment, this.copypasta.id).then(c => this.copypasta.comments.push(c));
   }
 }
