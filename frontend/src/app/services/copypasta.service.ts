@@ -3,6 +3,8 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Copypasta } from "../model/copypasta";
+import {Rating} from "../model/rating";
+import {Comment} from "../model/comment";
 
 @Injectable()
 export class CopypastaService {
@@ -18,8 +20,13 @@ export class CopypastaService {
       .catch(this.handleError);
   }
 
-  updateCopypasta(copypasta: Copypasta) {
-    this.http.post(this.pastasUrl + copypasta.id.toString(), JSON.stringify(copypasta), {headers: this.headers})
+  addComment(comment: Comment, pastaId: number) {
+    this.http.post(this.pastasUrl + pastaId.toString() + "/comment", JSON.stringify(comment), {headers: this.headers})
+      .toPromise().catch(this.handleError);
+  }
+
+  addRating(rating: Rating, pastaId: number) {
+    this.http.post(this.pastasUrl + pastaId.toString() + "/rating", JSON.stringify(rating), {headers: this.headers})
       .toPromise().catch(this.handleError);
   }
 

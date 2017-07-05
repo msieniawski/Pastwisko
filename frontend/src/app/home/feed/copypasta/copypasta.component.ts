@@ -4,6 +4,7 @@ import {IStarRatingOnRatingChangeEven} from "angular-star-rating";
 import {Comment} from "../../../model/comment";
 import {CopypastaService} from "../../../services/copypasta.service";
 import {User} from "../../../model/user";
+import {Rating} from "../../../model/rating";
 
 @Component({
   selector: 'app-copypasta',
@@ -35,8 +36,14 @@ export class CopypastaComponent implements OnInit {
   }
 
   onRatingChange($event: IStarRatingOnRatingChangeEven) {
+    if (this.myRating === 0) {
+      const rating = new Rating;
+      rating.value = $event.rating;
+      rating.author = new User;
+      this.copypasta.ratings.push(rating);
+      this.copypastaService.addRating(rating, this.copypasta.id);
+    }
     this.myRating = $event.rating;
-    this.saveChanges();
   }
 
   addComment() {
@@ -44,10 +51,6 @@ export class CopypastaComponent implements OnInit {
     comment.text = this.currentComment;
     comment.author = new User;
     this.copypasta.comments.push(comment);
-    this.saveChanges();
-  }
-
-  saveChanges() {
-    this.copypastaService.updateCopypasta(this.copypasta);
+    this.copypastaService.addComment(comment, this.copypasta.id);
   }
 }
