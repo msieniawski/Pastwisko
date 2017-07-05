@@ -69,7 +69,15 @@ public class CopyPasta {
         this.tags = new ArrayList<>();
     }
 
-    public void addComment(Comment comment) {
+    public void add(Comment comment) {
         this.comments.add(comment);
+    }
+
+    public void add(Rating rating) {
+        this.ratings.add(rating);
+    }
+
+    public void add(Tag tag) {
+        this.tags.add(tag);
     }
 }
