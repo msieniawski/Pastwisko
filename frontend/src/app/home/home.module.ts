@@ -9,13 +9,15 @@ import {HomeRoutingModule} from "./home-routing.module";
 import { CopypastaComponent } from './feed/copypasta/copypasta.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {StarRatingModule} from "angular-star-rating";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
     TranslateModule,
-    StarRatingModule
+    StarRatingModule,
+    FormsModule
   ],
   declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent]
 })
