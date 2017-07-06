@@ -16,17 +16,16 @@ public class TagController {
     private final TagService tagService;
 
     @GetMapping("api/tags")
-    @ResponseBody
-    public List<Tag> getAllTags() {
-        return tagService.listAll();
+    public ResponseEntity<?> getAllTags() {
+        List<Tag> tags = tagService.listAll();
+        return ResponseEntity.ok(tags);
     }
 
     @PostMapping("api/tags")
     public ResponseEntity<?> addTag(@RequestBody Tag tag) {
 
-        if (tag == null) {
+        if (tag == null)
             return ResponseEntity.badRequest().body("Tag is null");
-        }
 
         tagService.saveOrUpdate(tag);
 

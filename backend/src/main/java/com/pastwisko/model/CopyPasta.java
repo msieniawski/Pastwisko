@@ -1,8 +1,10 @@
 package com.pastwisko.model;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.pastwisko.serializer.CopyPastaSerializer;
+import com.pastwisko.serialization.AuthorDeserializer;
+import com.pastwisko.serialization.AuthorSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +22,6 @@ import static javax.persistence.GenerationType.AUTO;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-@JsonSerialize(using = CopyPastaSerializer.class)
 public class CopyPasta {
 
     @Id @GeneratedValue(strategy = AUTO)
@@ -43,6 +44,8 @@ public class CopyPasta {
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
     @Getter @Setter
+    @JsonSerialize(using = AuthorSerializer.class)
+    @JsonDeserialize(using = AuthorDeserializer.class)
     private User author;
 
     @OneToMany(mappedBy = "pasta", fetch = EAGER)

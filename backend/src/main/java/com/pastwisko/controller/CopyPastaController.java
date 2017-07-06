@@ -22,38 +22,23 @@ public class CopyPastaController {
     private final CopyPastaService copyPastaService;
     private final CommentService commentService;
     private final RatingService ratingService;
-    private final TagService tagService;
 
     @GetMapping("api/pastas")
-    @ResponseBody
-    public List<CopyPasta> getAllCopyPastas() {
-        return copyPastaService.listAll();
-    }
-
-    @GetMapping("api/pastas/{id}")
-    @ResponseBody
-    public ResponseEntity<?> getPasta(@PathVariable int id) {
-        CopyPasta copyPasta = copyPastaService.getById(id);
-
-        if (copyPasta == null) {
-            return ResponseEntity.badRequest().body("Pasta not found: " + id);
-        }
-
-        return ResponseEntity.ok(copyPasta);
+    public ResponseEntity<?> getAllCopyPastas() {
+        List<CopyPasta> pastas = copyPastaService.listAll();
+        return ResponseEntity.ok(pastas);
     }
 
     @PostMapping("api/pastas/{id}/comment")
     public ResponseEntity<?> addComment(@PathVariable int id, @RequestBody Comment comment) {
 
-        if (comment == null) {
+        if (comment == null)
             return ResponseEntity.badRequest().body("Comment is null");
-        }
 
         CopyPasta copyPasta = copyPastaService.getById(id);
 
-        if (copyPasta == null) {
+        if (copyPasta == null)
             return ResponseEntity.badRequest().body("Pasta not found: " + id);
-        }
 
         copyPasta.add(comment);
         comment.setPasta(copyPasta);
@@ -66,15 +51,13 @@ public class CopyPastaController {
     @PostMapping("api/pastas/{id}/rating")
     public ResponseEntity<?> addRating(@PathVariable int id, @RequestBody Rating rating) {
 
-        if (rating == null) {
+        if (rating == null)
             return ResponseEntity.badRequest().body("Rating is null");
-        }
 
         CopyPasta copyPasta = copyPastaService.getById(id);
 
-        if (copyPasta == null) {
+        if (copyPasta == null)
             return ResponseEntity.badRequest().body("Pasta not found: " + id);
-        }
 
         copyPasta.add(rating);
         rating.setPasta(copyPasta);
@@ -84,22 +67,13 @@ public class CopyPastaController {
         return ResponseEntity.ok(copyPasta);
     }
 
-    @PostMapping("api/pastas/{id}/tag")
-    public ResponseEntity<?> addTag(@PathVariable int id, @RequestBody Tag tag) {
+    @PostMapping("api/pastas")
+    public ResponseEntity<?> createCopyPasta(@RequestBody CopyPasta copyPasta) {
 
-        if (tag == null) {
-            return ResponseEntity.badRequest().body("Tag is null");
-        }
+        if (copyPasta == null)
+            return ResponseEntity.badRequest().body("CopyPasta is null");
 
-        CopyPasta copyPasta = copyPastaService.getById(id);
-
-        if (copyPasta == null) {
-            return ResponseEntity.badRequest().body("Pasta not found: " + id);
-        }
-
-        copyPasta.add(tag);
-
-        tagService.saveOrUpdate(tag);
+        copyPastaService.saveOrUpdate(copyPasta);
 
         return ResponseEntity.ok(copyPasta);
     }

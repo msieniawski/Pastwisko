@@ -3,6 +3,10 @@ package com.pastwisko.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.pastwisko.serialization.AuthorDeserializer;
+import com.pastwisko.serialization.AuthorSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +33,8 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
     @Getter @Setter
+    @JsonSerialize(using = AuthorSerializer.class)
+    @JsonDeserialize(using = AuthorDeserializer.class)
     private User author;
 
     @ManyToOne
