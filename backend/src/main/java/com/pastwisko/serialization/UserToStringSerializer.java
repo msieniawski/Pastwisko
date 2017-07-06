@@ -7,7 +7,7 @@ import com.pastwisko.model.User;
 
 import java.io.IOException;
 
-public class AuthorSerializer extends JsonSerializer<User> {
+public class UserToStringSerializer extends JsonSerializer<User> {
 
     @Override
     public void serialize(User user, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {

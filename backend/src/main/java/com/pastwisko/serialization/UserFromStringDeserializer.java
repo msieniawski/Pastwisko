@@ -10,12 +10,12 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import java.io.IOException;
 
-public class AuthorDeserializer extends JsonDeserializer<User> {
+public class UserFromStringDeserializer extends JsonDeserializer<User> {
 
     @Autowired
     private UserService userService;
 
-    public AuthorDeserializer() {
+    public UserFromStringDeserializer() {
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
     }
 

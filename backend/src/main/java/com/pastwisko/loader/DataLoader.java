@@ -1,7 +1,8 @@
-package com.pastwisko;
+package com.pastwisko.loader;
 
 import com.pastwisko.model.*;
 import com.pastwisko.service.*;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,6 +12,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 @Component
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class DataLoader implements ApplicationRunner {
 
     private final CommentService commentService;
@@ -18,16 +20,6 @@ public class DataLoader implements ApplicationRunner {
     private final RatingService ratingService;
     private final TagService tagService;
     private final UserService userService;
-
-    @Autowired
-    public DataLoader(CommentService commentService, CopyPastaService copyPastaService, UserService userService,
-                      RatingService ratingService, TagService tagService) {
-        this.commentService = commentService;
-        this.copyPastaService = copyPastaService;
-        this.userService = userService;
-        this.ratingService = ratingService;
-        this.tagService = tagService;
-    }
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {

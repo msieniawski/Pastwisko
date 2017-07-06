@@ -24,13 +24,13 @@ public class CopyPastaController {
     private final RatingService ratingService;
 
     @GetMapping("api/pastas")
-    public ResponseEntity<?> getAllCopyPastas() {
+    public ResponseEntity getAllCopyPastas() {
         List<CopyPasta> pastas = copyPastaService.listAll();
         return ResponseEntity.ok(pastas);
     }
 
     @PostMapping("api/pastas/{id}/comment")
-    public ResponseEntity<?> addComment(@PathVariable int id, @RequestBody Comment comment) {
+    public ResponseEntity addComment(@PathVariable int id, @RequestBody Comment comment) {
 
         if (comment == null)
             return ResponseEntity.badRequest().body("Comment is null");
@@ -49,7 +49,7 @@ public class CopyPastaController {
     }
 
     @PostMapping("api/pastas/{id}/rating")
-    public ResponseEntity<?> addRating(@PathVariable int id, @RequestBody Rating rating) {
+    public ResponseEntity addRating(@PathVariable int id, @RequestBody Rating rating) {
 
         if (rating == null)
             return ResponseEntity.badRequest().body("Rating is null");

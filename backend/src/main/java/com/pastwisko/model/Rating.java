@@ -3,8 +3,8 @@ package com.pastwisko.model;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.pastwisko.serialization.AuthorDeserializer;
-import com.pastwisko.serialization.AuthorSerializer;
+import com.pastwisko.serialization.UserFromStringDeserializer;
+import com.pastwisko.serialization.UserToStringSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,8 +31,8 @@ public class Rating {
     @ManyToOne
     @JoinColumn(name = "author", nullable = false)
     @Getter @Setter
-    @JsonSerialize(using = AuthorSerializer.class)
-    @JsonDeserialize(using = AuthorDeserializer.class)
+    @JsonSerialize(using = UserToStringSerializer.class)
+    @JsonDeserialize(using = UserFromStringDeserializer.class)
     private User author;
 
     @ManyToOne
