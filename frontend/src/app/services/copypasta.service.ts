@@ -1,21 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import {Injectable} from "@angular/core";
+import {Headers, Http} from "@angular/http";
+import "rxjs/add/operator/toPromise";
 
-import { Copypasta } from "../model/copypasta";
+import {Copypasta} from "../model/copypasta";
 import {Rating} from "../model/rating";
 import {Comment} from "../model/comment";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class CopypastaService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AuthService.getToken()});
   private pastasUrl = 'api/pastas/';
 
   constructor(private http: Http) { }
 
   getAllCopypastas(): Promise<Copypasta[]> {
-    return this.http.get(this.pastasUrl)
+    return this.http.get(this.pastasUrl, {headers: this.headers})
       .toPromise().then(response => response.json() as Copypasta[])
       .catch(this.handleError);
   }
