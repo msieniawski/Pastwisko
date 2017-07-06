@@ -19,12 +19,12 @@
   </div>
   <div class="offset-4 col-4">
     <div class="container-fluid flex center">
-      <span class="label label-default" *ngFor="let tag of selectedTags">{{tag.name}}</span>
+      <p class="tag" *ngFor="let tag of selectedTags">{{tag.name}}</p>
     </div>
   </div>
   <div class="offset-4 col-4">
     <div class="container-fluid flex center">
-      <button type="submit" class="btn btn-success" (click)="addCopyPasta()" translate>Add</button>
+      <button type="submit" class="btn" (click)="addCopyPasta()" translate>Add</button>
     </div>
   </div>
 </div>

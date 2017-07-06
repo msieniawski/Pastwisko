@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CopypastaService } from '../../services/copypasta.service';
 import { Copypasta } from "../../model/copypasta";
+import {Tag} from "../../model/tag";
 
 @Component({
   selector: 'app-feed',
@@ -23,4 +24,11 @@ export class FeedComponent implements OnInit {
     this.getCopypastas();
   }
 
+  addTagToFilter(tag: Tag) {
+
+  }
+
+  removeTagFromFilter(tag: Tag) {
+
+  }
 }

@@ -5,6 +5,7 @@ import {Comment} from "../../../model/comment";
 import {CopypastaService} from "../../../services/copypasta.service";
 import {User} from "../../../model/user";
 import {Rating} from "../../../model/rating";
+import {FeedComponent} from "../feed.component";
 
 @Component({
   selector: 'app-copypasta',
@@ -16,6 +17,7 @@ export class CopypastaComponent implements OnInit {
 
   @Input('copypasta') copypasta: Copypasta;
 
+  parent: FeedComponent;
   avgRating: number;
   myRating: number;
   currentComment: string;

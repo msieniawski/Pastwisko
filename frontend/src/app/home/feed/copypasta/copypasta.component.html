@@ -1,10 +1,10 @@
 <div class="container-fluid top-margin col-10 shadow-box">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded pasta-title-bar">
     <a class="navbar-brand" href="#">{{copypasta.title}}</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav" routerLinkActive="active">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['profile', copypasta.author.id]">{{copypasta.author.userName}}</a>
+          <a class="nav-link" [routerLink]="['profile', copypasta.author]">{{copypasta.author}}</a>
         </li>
       </ul>
     </div>
@@ -12,38 +12,41 @@
     <div class="flex">
       <p class="rating wide" translate>Your Rating:</p>
       <p class="rating h5">{{myRatingValue()}}</p>
-      <star-rating-comp [starType]="'svg'" [rating]="myRating" (onRatingChange)="onRatingChange($event)"></star-rating-comp>
+      <star-rating-comp [starType]="'svg'" [rating]="myRating"
+                        (onRatingChange)="onRatingChange($event)"></star-rating-comp>
     </div>
     <div class="flex">
       <p class="rating wide" translate>Average:</p>
       <p class="rating h5">{{avgRating.toPrecision(2)}}</p>
-      <star-rating-comp [starType]="'svg'" [rating]="avgRating" [readOnly]="true" [showHalfStars]="true"></star-rating-comp>
+      <star-rating-comp [starType]="'svg'" [rating]="avgRating" [readOnly]="true"
+                        [showHalfStars]="true"></star-rating-comp>
     </div>
   </nav>
 
-  <div class="container-fluid flex center">
-    <span class="label label-default" *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
-  </div>
-
-  <div class="container-fluid flex top-margin">
-    <p class="col-7">
-      {{copypasta.text}}
-    </p>
-    <div class="col-5">
+  <div class="container-fluid flex">
+    <div class="col-7">
+      <div class="container-fluid flex">
+        <span class="fake-link" (click)="parent.addTagToFilter(tag)"
+              *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
+      </div>
+      <p>
+        {{copypasta.text}}
+      </p>
+    </div>
+    <div class="col-5" style="margin-top: 20px">
       <div class="col-10 col-centered">
         <div class="center" style="margin-bottom: 20px" *ngFor="let comment of copypasta.comments">
-          <a class="h6" [routerLink]="['profile', comment.author.id]">{{comment.author.userName}}</a>
+          <a class="h6" [routerLink]="['profile', comment.author.userName]">{{comment.author.userName}}</a>
           <p>{{comment.text}}</p>
         </div>
         <div class="form-group">
           <textarea [(ngModel)]="currentComment" class="form-control" rows="3"></textarea>
         </div>
         <div class="container-fluid flex center">
-          <button type="submit" class="btn btn-success" (click)="addComment()" translate>Add comment</button>
+          <button type="button" class="btn" (click)="addComment()" translate>Add comment</button>
         </div>
       </div>
     </div>
   </div>
-
 
 </div>
