@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {FacebookService, InitParams, LoginResponse} from "ngx-facebook";
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,17 @@ export class LoginComponent implements OnInit {
   private password: string;
   private error: string;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private fb: FacebookService) { }
 
-  ngOnInit() {
-    this.pending = false;
-  }
+ngOnInit() {
+  this.pending = false;
+  const initParams: InitParams = {
+    appId: '1312120852189732',
+    xfbml: true,
+    version: 'v2.9'
+  };
+  this.fb.init(initParams);
+}
 
   login() {
     this.pending = true;
@@ -32,6 +39,20 @@ export class LoginComponent implements OnInit {
           this.pending = false;
         }
       }, error => {
+        this.pending = false;
+        this.error = error;
+      });
+  }
+
+  loginWithFacebook(): void {
+    this.pending = true;
+    this.fb.login()
+      .then((response: LoginResponse) => {
+        console.log(response);
+        this.authService.loginWithFB(response.authResponse.accessToken);
+        this.pending = false;
+      })
+      .catch((error: any) => {
         this.pending = false;
         this.error = error;
       });
