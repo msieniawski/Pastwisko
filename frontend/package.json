@@ -25,6 +25,7 @@
     "@ngx-translate/http-loader": "0.0.3",
     "angular-star-rating": "^3.0.0",
     "core-js": "^2.4.1",
+    "ngx-facebook": "^2.4.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

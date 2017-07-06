@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
 import {AuthGuard} from "./auth/auth-guard/auth.guard";
+import {FacebookModule} from "ngx-facebook";
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http);
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: Http) {
     BrowserModule,
     FormsModule,
     HttpModule,
+    FacebookModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
