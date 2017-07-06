@@ -22,11 +22,10 @@ public class User {
     @Getter @Setter
     private int id;
 
-    @Column(name = "username", columnDefinition = "varchar(50)", nullable = false)
+    @Column(name = "username", columnDefinition = "varchar(50)", nullable = false, unique = true)
     @Getter @Setter
     private String userName;
 
-    // TU OCZYWIŚCIE POWINNY BYĆ STOROWANE HASZE XD
     @Column(name = "password", columnDefinition = "varchar(256)", nullable = false)
     @Getter @Setter
     @JsonIgnore
