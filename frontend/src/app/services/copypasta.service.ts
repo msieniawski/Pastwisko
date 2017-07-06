@@ -10,7 +10,7 @@ import {AuthService} from "./auth.service";
 @Injectable()
 export class CopypastaService {
 
-  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AuthService.getToken()});
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': AuthService.getToken()});
   private pastasUrl = 'api/pastas/';
 
   constructor(private http: Http) { }

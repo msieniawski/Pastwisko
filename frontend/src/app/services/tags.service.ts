@@ -2,11 +2,12 @@ import {Injectable} from "@angular/core";
 import {Headers, Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {Tag} from "../model/tag";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class TagsService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': AuthService.getToken()});
   private usersUrl = 'api/tags';
 
   constructor(private http: Http) { }

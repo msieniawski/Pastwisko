@@ -38,7 +38,7 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     return this.http.post(this.authUrl + "login", JSON.stringify({username: username, password: password}), {headers: this.headers})
       .map((response: Response) => {
-        const token = response.json() && response.json().token;
+        const token = response.headers.get('Authorization');
         if (token) {
           localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
           return true;
@@ -51,7 +51,7 @@ export class AuthService {
   loginWithFB(fbToken: string): Observable<boolean> {
     return this.http.post(this.authUrl + "login/fb", JSON.stringify({token: fbToken}), {headers: this.headers})
       .map((response: Response) => {
-        const token = response.json() && response.json().token;
+        const token = response.headers.get('Authorization');
         if (token) {
           localStorage.setItem('currentUser', JSON.stringify({username: "", token: token}));
           return true;
@@ -65,7 +65,7 @@ export class AuthService {
     return this.http.post(this.authUrl + "register",
       JSON.stringify({email: email, username: username, password: password}), {headers: this.headers})
       .map((response: Response) => {
-        const token = response.json() && response.json().token;
+        const token = response.headers.get('Authorization');
         if (token) {
           localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
           return true;
