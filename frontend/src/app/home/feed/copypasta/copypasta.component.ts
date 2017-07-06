@@ -54,4 +54,8 @@ export class CopypastaComponent implements OnInit {
     comment.author = AuthService.getCurrentUsername();
     this.copypastaService.addComment(comment, this.copypasta.id).then(c => this.copypasta.comments.push(c));
   }
+
+  isLoggedUser(): boolean {
+    return AuthService.isLoggedIn();
+  }
 }
