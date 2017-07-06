@@ -15,28 +15,14 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("api/users")
-    @ResponseBody
-    public List<User> getAllUsers() {
-        return userService.listAll();
-    }
+    @GetMapping("api/users/{userName}")
+    public ResponseEntity<?> getUser(@PathVariable String userName) {
+        User user = userService.findByUserName(userName);
 
-    @PostMapping("api/users")
-    public ResponseEntity<?> saveUser(@RequestBody User user) {
-
-        if (user == null) {
-            return ResponseEntity.badRequest().body("User is null");
-        }
-
-        userService.saveOrUpdate(user);
+        if (user == null)
+            return ResponseEntity.badRequest().body("User not found");
 
         return ResponseEntity.ok(user);
-    }
-
-    @GetMapping("api/users/{userName}")
-    @ResponseBody
-    public User getUser(@PathVariable String userName) {
-        return userService.findByUserName(userName);
     }
 
 }
