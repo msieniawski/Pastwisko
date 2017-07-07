@@ -11,7 +11,7 @@ import {UserService} from "../../services/user.service";
 })
 export class UserProfileComponent implements OnInit {
 
-  user: User;
+  protected user: User;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 

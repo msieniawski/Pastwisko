@@ -4,7 +4,7 @@
   </div>
   <ul class="no-marker">
     <li *ngFor="let copypasta of copypastas">
-      <app-copypasta [copypasta]=copypasta></app-copypasta>
+      <app-copypasta (tagSelected)="filterByTag($event)" [copypasta]=copypasta></app-copypasta>
     </li>
   </ul>
 </div>

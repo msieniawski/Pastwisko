@@ -26,7 +26,8 @@ export class CopypastaCreatorComponent implements OnInit {
     copypasta.title = this.title;
     copypasta.text = this.text;
     copypasta.tags = this.tags;
-    copypasta.creationDate = new Date;
+    copypasta.ratings = [];
+    copypasta.comments = [];
     this.copypastaService.createCopypasta(copypasta);
   }
 

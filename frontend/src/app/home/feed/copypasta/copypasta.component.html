@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['profile', copypasta.author]">{{copypasta.author}}</a>
+          <a class="nav-link" [routerLink]="['/home/profile', copypasta.author]">{{copypasta.author}}</a>
         </li>
       </ul>
     </div>
@@ -23,7 +23,7 @@
   <div class="container-fluid flex">
     <div class="col-7">
       <div class="container-fluid flex">
-        <span class="fake-link" (click)="parent.filterByTag(tag)" *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
+        <span class="fake-link" (click)="selectTagFilter(tag)" *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
       </div>
       <p>
         {{copypasta.text}}
@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['profile', comment.author]">{{comment.author}}</a>
+                  <a class="nav-link" [routerLink]="['/home/profile', comment.author]">{{comment.author}}</a>
                 </li>
               </ul>
             </div>
