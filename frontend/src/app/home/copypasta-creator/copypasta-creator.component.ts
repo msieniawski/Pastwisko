@@ -33,4 +33,8 @@ export class CopypastaCreatorComponent implements OnInit {
   addTag(tag: Tag) {
     this.tags.push(tag);
   }
+
+  deleteTag(tag: Tag) {
+    this.tags = this.tags.filter(t => t !== tag);
+  }
 }

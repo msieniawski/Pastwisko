@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="container-fluid flex center">
+    <app-tag-search class="col-4" (tagSelected)="filterByTag($event)"></app-tag-search>
+  </div>
   <ul class="no-marker">
     <li *ngFor="let copypasta of copypastas">
       <app-copypasta [copypasta]=copypasta></app-copypasta>

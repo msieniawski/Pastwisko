@@ -1,25 +1,22 @@
 <div class="container-fluid top-margin col-10 shadow-box">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded pasta-title-bar">
-    <a class="navbar-brand" href="#">{{copypasta.title}}</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav navbar-nav" routerLinkActive="active">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded title-bar">
+    <p class="navbar-brand">{{copypasta.title}}</p>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['profile', copypasta.author]">{{copypasta.author}}</a>
         </li>
       </ul>
     </div>
-
     <div class="flex">
       <p class="rating wide" translate>Your Rating:</p>
       <p class="rating h5">{{myRatingValue()}}</p>
-      <star-rating-comp [starType]="'svg'" [rating]="myRating"
-                        (onRatingChange)="onRatingChange($event)"></star-rating-comp>
+      <star-rating-comp [starType]="'svg'" [rating]="myRating" (onRatingChange)="onRatingChange($event)"></star-rating-comp>
     </div>
     <div class="flex">
       <p class="rating wide" translate>Average:</p>
       <p class="rating h5">{{avgRating.toPrecision(2)}}</p>
-      <star-rating-comp [starType]="'svg'" [rating]="avgRating" [readOnly]="true"
-                        [showHalfStars]="true"></star-rating-comp>
+      <star-rating-comp [starType]="'svg'" [rating]="avgRating" [readOnly]="true" [showHalfStars]="true"></star-rating-comp>
     </div>
   </nav>
 
@@ -32,14 +29,24 @@
         {{copypasta.text}}
       </p>
     </div>
-    <div class="col-5" style="margin-top: 20px">
+    <div class="col-5">
       <div class="col-10 col-centered">
-        <div class="center" style="margin-bottom: 20px" *ngFor="let comment of copypasta.comments">
-          <a class="h6" [routerLink]="['profile', comment.author]">{{comment.author}}</a>
-          <p>{{comment.text}}</p>
+        <div class="container-fluid shadow-box" *ngFor="let comment of copypasta.comments" style="margin-top: 20px">
+          <nav class="navbar navbar-toggleable-md navbar-light bg-faded title-bar comment-title-bar">
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['profile', comment.author]">{{comment.author}}</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <p class="comment">
+            {{comment.text}}
+          </p>
         </div>
         <div *ngIf="isLoggedUser()">
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 25px">
             <textarea [(ngModel)]="currentComment" name="comment" class="form-control" rows="3"></textarea>
           </div>
           <div class="container-fluid flex center">
@@ -48,6 +55,6 @@
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>

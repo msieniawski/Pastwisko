@@ -17,4 +17,12 @@ export class HomeComponent implements OnInit {
     return AuthService.getCurrentUsername();
   }
 
+  isLoggedIn(): boolean {
+    return AuthService.isLoggedIn();
+  }
+
+  logout() {
+    AuthService.logout();
+  }
+
 }

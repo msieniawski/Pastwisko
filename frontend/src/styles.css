@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 .navbar-collapse.center {
   display: flex;
@@ -85,11 +86,25 @@
 }
 
 .tag {
-
+  border-radius: 12px;
+  border: solid 1px #292b2c;
+  color: #292b2c;
+  display: flex;
+  padding: 7px;
+  margin: 10px
 }
 
-.pasta-title-bar {
+.tag > p {
+  margin-bottom: 0;
+}
+
+.title-bar {
   border-bottom: solid 1px #292b2c;
+  box-shadow: none;
+}
+
+.comment-title-bar {
+  height: 28px;
 }
 
 .fake-link {
@@ -101,6 +116,15 @@
 .fake-link:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.navbar-brand {
+  margin: 5px;
+  font-size: 22px;
+}
+
+.comment {
+  padding: 10px;
 }
 
 textarea {
