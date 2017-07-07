@@ -49,9 +49,14 @@ public class CopyPastaController {
         copyPasta.add(comment);
         comment.setPasta(copyPasta);
 
+        System.out.println("Comment id: " + comment.getId());
+        System.out.println("Comment text: " + comment.getText());
+        System.out.println("Comment author: " + comment.getAuthor().getUserName());
+        System.out.println("Comment pasta: " + comment.getPasta().getTitle());
+
         commentService.saveOrUpdate(comment);
 
-        return ResponseEntity.ok(copyPasta);
+        return ResponseEntity.ok(comment);
     }
 
     @PostMapping("api/pastas/{id}/rating")
@@ -70,7 +75,7 @@ public class CopyPastaController {
 
         ratingService.saveOrUpdate(rating);
 
-        return ResponseEntity.ok(copyPasta);
+        return ResponseEntity.ok(rating);
     }
 
     @PostMapping("api/pastas")
