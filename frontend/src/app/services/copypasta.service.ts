@@ -22,7 +22,7 @@ export class CopypastaService {
   }
 
   getByTag(tagId: number): Promise<Copypasta[]> {
-    return this.http.get(this.pastasUrl + 'tag/' + tagId, {headers: this.headers})
+    return this.http.get(this.pastasUrl + 'tags/' + tagId, {headers: this.headers})
       .toPromise().then(response => response.json() as Copypasta[])
       .catch(this.handleError);
   }

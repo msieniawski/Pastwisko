@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {CopypastaService} from "../../services/copypasta.service";
 import {Copypasta} from "../../model/copypasta";
-import {TagsService} from "../../services/tags.service";
 import {Tag} from "../../model/tag";
 
 @Component({
@@ -19,12 +18,15 @@ export class CopypastaCreatorComponent implements OnInit {
   constructor(private copypastaService: CopypastaService) { }
 
   ngOnInit() {
+    this.tags = [];
   }
 
   addCopyPasta() {
     const copypasta = new Copypasta;
     copypasta.title = this.title;
     copypasta.text = this.text;
+    copypasta.tags = this.tags;
+    copypasta.creationDate = new Date;
     this.copypastaService.createCopypasta(copypasta);
   }
 
