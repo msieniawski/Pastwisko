@@ -29,6 +29,12 @@ public class CopyPastaController {
         return ResponseEntity.ok(pastas);
     }
 
+    @GetMapping("api/pastas/tags/{id}")
+    public ResponseEntity getCopyPastaByTag(@PathVariable int id) {
+        List<CopyPasta> pastas = copyPastaService.findByTag(id);
+        return ResponseEntity.ok(pastas);
+    }
+
     @PostMapping("api/pastas/{id}/comment")
     public ResponseEntity addComment(@PathVariable int id, @RequestBody Comment comment) {
 

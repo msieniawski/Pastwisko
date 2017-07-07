@@ -4,6 +4,7 @@ import com.pastwisko.model.User;
 import com.pastwisko.repository.UserRepository;
 import com.pastwisko.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveOrUpdate(User user) {
+        hashPassword(user);
         return userRepository.save(user);
     }
 
@@ -40,7 +42,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUserName(String userName) {
-        List<User> users = userRepository.findByUserName(userName);
-        return users.isEmpty() ? null : users.get(0);
+        return userRepository.findByUserName(userName);
+    }
+
+    private void hashPassword(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
     }
 }
