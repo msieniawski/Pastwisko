@@ -10,6 +10,7 @@ import { CopypastaComponent } from './feed/copypasta/copypasta.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {StarRatingModule} from "angular-star-rating";
 import {FormsModule} from "@angular/forms";
+import { TagSearchComponent } from './tag-search/tag-search.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {FormsModule} from "@angular/forms";
     StarRatingModule,
     FormsModule
   ],
-  declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent]
+  declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent, TagSearchComponent]
 })
 export class HomeModule { }

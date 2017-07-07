@@ -8,24 +8,17 @@ import {Tag} from "../../model/tag";
   selector: 'app-copypasta-creator',
   templateUrl: './copypasta-creator.component.html',
   styleUrls: ['./copypasta-creator.component.css'],
-  providers: [CopypastaService, TagsService]
+  providers: [CopypastaService]
 })
 export class CopypastaCreatorComponent implements OnInit {
 
   tags: Tag[];
-  selectedTags: Tag[];
-  currentTag: string;
   title: string;
   text: string;
 
-  constructor(private copypastaService: CopypastaService, private tagService: TagsService) { }
+  constructor(private copypastaService: CopypastaService) { }
 
   ngOnInit() {
-    this.getTags();
-  }
-
-  getTags() {
-    this.tagService.getTags().then(tags => this.tags = tags);
   }
 
   addCopyPasta() {
@@ -35,14 +28,7 @@ export class CopypastaCreatorComponent implements OnInit {
     this.copypastaService.createCopypasta(copypasta);
   }
 
-  addTag() {
-    const tagStream = this.tags.filter(tag => tag.name === this.currentTag);
-    if (tagStream.length === 0) {
-      const tag = new Tag;
-      tag.name = this.currentTag;
-      this.tagService.createTag(tag).then(t => this.selectedTags.push(t));
-    } else {
-      this.selectedTags.push(tagStream.pop());
-    }
+  addTag(tag: Tag) {
+    this.tags.push(tag);
   }
 }

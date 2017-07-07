@@ -16,19 +16,19 @@ export class FeedComponent implements OnInit {
 
   constructor(private copypastaService: CopypastaService) { }
 
-  getCopypastas(): void {
-    this.copypastaService.getAllCopypastas().then(copypastas => { this.copypastas = copypastas; });
-  }
-
   ngOnInit() {
     this.getCopypastas();
   }
 
-  addTagToFilter(tag: Tag) {
-
+  filterByTag(tag: Tag) {
+    this.getCopypastasByTag(tag);
   }
 
-  removeTagFromFilter(tag: Tag) {
+  getCopypastas(): void {
+    this.copypastaService.getAllCopypastas().then(copypastas => { this.copypastas = copypastas; });
+  }
 
+  getCopypastasByTag(tag: Tag): void {
+    this.copypastaService.getByTag(tag.id).then(copypastas => { this.copypastas = copypastas; });
   }
 }

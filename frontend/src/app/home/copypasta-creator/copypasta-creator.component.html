@@ -14,12 +14,12 @@
   <div class="form-group row col-12">
     <label for="tag" class="col-form-label col-3 offset-1" translate>Add tag</label>
     <div class="col-4">
-      <input (keyup.enter)="addTag()" type="text" class="form-control" id="tag" required>
+      <app-tag-search (tagSelected)="addTag($event)" id="tag">
     </div>
   </div>
   <div class="offset-4 col-4">
     <div class="container-fluid flex center">
-      <p class="tag" *ngFor="let tag of selectedTags">{{tag.name}}</p>
+      <p class="tag" *ngFor="let tag of tags">{{tag.name}}</p>
     </div>
   </div>
   <div class="offset-4 col-4">

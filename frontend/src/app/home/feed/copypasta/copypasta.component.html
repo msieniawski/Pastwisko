@@ -26,8 +26,7 @@
   <div class="container-fluid flex">
     <div class="col-7">
       <div class="container-fluid flex">
-        <span class="fake-link" (click)="parent.addTagToFilter(tag)"
-              *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
+        <span class="fake-link" (click)="parent.filterByTag(tag)" *ngFor="let tag of copypasta.tags">{{tag.name}}</span>
       </div>
       <p>
         {{copypasta.text}}

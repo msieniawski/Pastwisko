@@ -21,6 +21,13 @@ export class CopypastaService {
       .catch(this.handleError);
   }
 
+  getByTag(tagId: number): Promise<Copypasta[]> {
+    return this.http.get(this.pastasUrl + 'tag/' + tagId, {headers: this.headers})
+      .toPromise().then(response => response.json() as Copypasta[])
+      .catch(this.handleError);
+  }
+
+
   addComment(comment: Comment, pastaId: number): Promise<Comment> {
     return this.http.post(this.pastasUrl + pastaId.toString() + "/comment", JSON.stringify(comment), {headers: this.headers})
       .toPromise().then(response => response.json() as Comment)

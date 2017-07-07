@@ -18,6 +18,7 @@ export class CopypastaComponent implements OnInit {
   @Input('copypasta') copypasta: Copypasta;
 
   parent: FeedComponent;
+
   avgRating: number;
   myRating: number;
   currentComment: string;
