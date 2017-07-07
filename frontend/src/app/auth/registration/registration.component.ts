@@ -32,7 +32,8 @@ export class RegistrationComponent implements OnInit {
     this.authService.register(this.email, this.username, this.password)
       .subscribe(result => {
         if (result === true) {
-          this.router.navigate(['home']);
+          alert("Registration successful. You can now log in");
+          this.router.navigate(['login']);
         } else {
           this.error = 'Unknown error';
           this.pending = false;

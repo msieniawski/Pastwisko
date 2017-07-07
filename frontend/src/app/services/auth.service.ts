@@ -65,13 +65,7 @@ export class AuthService {
     return this.http.post(this.authUrl + "register",
       JSON.stringify({email: email, username: username, password: password}), {headers: this.headers})
       .map((response: Response) => {
-        const token = response.headers.get('Authorization');
-        if (token) {
-          localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
-          return true;
-        } else {
-          return false;
-        }
+        return response.ok;
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }
