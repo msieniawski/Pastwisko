@@ -48,9 +48,10 @@ ngOnInit() {
     this.pending = true;
     this.fb.login()
       .then((response: LoginResponse) => {
-        console.log(response);
-        this.authService.loginWithFB(response.authResponse.accessToken);
-        this.pending = false;
+        this.fb.api('/me').then((res) => {
+          this.authService.loginWithFB(response.authResponse.accessToken, res.name);
+          this.pending = false;
+        });
       })
       .catch((error: any) => {
         this.pending = false;

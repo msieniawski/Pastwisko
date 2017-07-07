@@ -48,12 +48,12 @@ export class AuthService {
       }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  loginWithFB(fbToken: string): Observable<boolean> {
+  loginWithFB(fbToken: string, fbUser: string): Observable<boolean> {
     return this.http.post(this.authUrl + "login/fb", JSON.stringify({token: fbToken}), {headers: this.headers})
       .map((response: Response) => {
         const token = response.headers.get('Authorization');
         if (token) {
-          localStorage.setItem('currentUser', JSON.stringify({username: "", token: token}));
+          localStorage.setItem('currentUser', JSON.stringify({username: fbUser, token: token}));
           return true;
         } else {
           return false;
