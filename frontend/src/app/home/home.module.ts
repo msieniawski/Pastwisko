@@ -11,6 +11,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {StarRatingModule} from "angular-star-rating";
 import {FormsModule} from "@angular/forms";
 import { TagSearchComponent } from './tag-search/tag-search.component';
+import {Ng2CompleterModule} from "ng2-completer";
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TagSearchComponent } from './tag-search/tag-search.component';
     HomeRoutingModule,
     TranslateModule,
     StarRatingModule,
-    FormsModule
+    FormsModule,
+    Ng2CompleterModule
   ],
   declarations: [HomeComponent, FeedComponent, UserProfileComponent, CopypastaCreatorComponent, CopypastaComponent, TagSearchComponent]
 })

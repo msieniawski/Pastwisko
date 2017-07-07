@@ -11,9 +11,9 @@ import {Tag} from "../../model/tag";
 })
 export class CopypastaCreatorComponent implements OnInit {
 
-  tags: Tag[];
-  title: string;
-  text: string;
+  private tags: Tag[];
+  private title: string;
+  private text: string;
 
   constructor(private copypastaService: CopypastaService) { }
 

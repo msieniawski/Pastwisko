@@ -1,1 +1,12 @@
-<input (keyup.enter)="selectTag()" type="text" class="form-control" id="tag" required>
+<ng2-completer
+  (keyup.enter)="selectTag()"
+  [placeholder]="'Provide tag and press enter'"
+  [inputClass]="'form-control'"
+  [(ngModel)]="tag"
+  [datasource]="tagNames"
+  [minSearchLength]="1"
+  [autoHighlight]="true"
+  [fillHighlighted]="false"
+  [overrideSuggested]="true"
+  [textNoResults]="false"
+  [textSearching]="false">

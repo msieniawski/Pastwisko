@@ -12,7 +12,7 @@ import {Tag} from "../../model/tag";
 })
 export class FeedComponent implements OnInit {
 
-  copypastas: Copypasta[];
+  protected copypastas: Copypasta[];
 
   constructor(private copypastaService: CopypastaService) { }
 
