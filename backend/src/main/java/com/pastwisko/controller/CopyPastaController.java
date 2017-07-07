@@ -3,16 +3,15 @@ package com.pastwisko.controller;
 import com.pastwisko.model.Comment;
 import com.pastwisko.model.CopyPasta;
 import com.pastwisko.model.Rating;
-import com.pastwisko.model.Tag;
 import com.pastwisko.service.CommentService;
 import com.pastwisko.service.CopyPastaService;
 import com.pastwisko.service.RatingService;
-import com.pastwisko.service.TagService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -83,6 +82,12 @@ public class CopyPastaController {
 
         if (copyPasta == null)
             return ResponseEntity.badRequest().body("CopyPasta is null");
+
+        copyPasta.setCreationDate(new Date());
+
+        System.out.println("Pasta title: " + copyPasta.getTitle());
+        System.out.println("Pasta text: " + copyPasta.getText());
+        System.out.println("Pasta author: " + copyPasta.getAuthor().getMail());
 
         copyPastaService.saveOrUpdate(copyPasta);
 

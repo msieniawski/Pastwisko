@@ -20,8 +20,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final String PASTAS_URL = "/api/pastas";
-    private final String LOGIN_URL  = "/api/auth/login";
+    private final String PASTAS_URL    = "/api/pastas";
+    private final String LOGIN_URL     = "/api/auth/login";
+    private final String REGISTER_URL  = "/api/auth/register";
 
     @Autowired
     private MyUserDetailsService userDetailsService;
@@ -31,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.GET, PASTAS_URL).permitAll()
                 .antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+                .antMatchers(HttpMethod.POST, REGISTER_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // Filtering the api/auth/login requests
